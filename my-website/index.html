@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWE Institute</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left" onclick="toggleSettings()">⚙️</div>
+        <div class="header-title" onclick="goHome()">SWE Institute</div>
+        <div class="header-right" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <span class="close-btn" onclick="toggleMenu()">×</span>
+        </div>
+        
+        <div class="menu-section">
+            <h4>Quick Access</h4>
+            <div class="menu-item" onclick="navigateTo('notes-main')">
+                <span>📝</span>
+                <span>Notes</span>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <h4>School Classes</h4>
+            <div class="menu-item" onclick="navigateTo('class8')">
+                <span>📚</span>
+                <span>Class 8th</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('class9')">
+                <span>📚</span>
+                <span>Class 9th</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('class10')">
+                <span>📚</span>
+                <span>Class 10th</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('class11')">
+                <span>📚</span>
+                <span>Class 11th</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('class12')">
+                <span>📚</span>
+                <span>Class 12th</span>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <h4>Competitive Exams</h4>
+            <div class="menu-item" onclick="navigateTo('jee')">
+                <span>🎯</span>
+                <span>JEE Preparation</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('neet')">
+                <span>⚕️</span>
+                <span>NEET Preparation</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('iit')">
+                <span>🏆</span>
+                <span>IIT Foundation</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Sidebar -->
+    <div class="settings-sidebar" id="settingsSidebar">
+        <div class="sidebar-header">
+            <h3>Settings</h3>
+            <span class="close-btn" onclick="toggleSettings()">×</span>
+        </div>
+        
+        <div class="menu-section">
+            <h4>Information</h4>
+            <div class="menu-item" onclick="navigateTo('about')">
+                <span>👤</span>
+                <span>About Me</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('faq')">
+                <span>❓</span>
+                <span>FAQs</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('contact')">
+                <span>📧</span>
+                <span>Contact</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <section class="hero">
+            <h1>
+                <span class="gradient-text">Welcome to SWE Institute</span>
+            </h1>
+            <p>Empowering students with quality education and comprehensive learning resources</p>
+        </section>
+
+        <div class="container">
+            <div class="section-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h2>Famous Books & Study Materials</h2>
+            </div>
+
+            <div class="card">
+                <div class="progress-bar"></div>
+                <h3>NCERT Mathematics</h3>
+                <p>Comprehensive guide for board exam preparation</p>
+                <span class="tag">Mathematics</span>
+            </div>
+
+            <div class="card">
+                <div class="progress-bar"></div>
+                <h3>NCERT Physics</h3>
+                <p>Complete physics concepts with solved examples</p>
+                <span class="tag">Physics</span>
+            </div>
+
+            <div class="card">
+                <div class="progress-bar"></div>
+                <h3>NCERT Chemistry</h3>
+                <p>Detailed chemistry notes for competitive exams</p>
+                <span class="tag">Chemistry</span>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="about-section">
+                <h2>SWE INSTITUTE</h2>
+                <p>SWE Institute empowers students for academic success. Conquer state boards, crack competitive entrances & Olympiads with our comprehensive resources and expert guidance.</p>
+                <p>SWE Institute equips students with the tools they need to excel in their studies. Our extensive library of study materials includes notes, practice problems, and topic-specific guides tailored to various academic levels and goals.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="section-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <h2>Recent Posts</h2>
+            </div>
+
+            <div class="post-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Robert_Frost_NYWTS.jpg/440px-Robert_Frost_NYWTS.jpg" alt="Robert Frost" class="author-image">
+                <div class="post-content">
+                    <div class="author-name">By Robert Frost</div>
+                    <h3>Fire and Ice</h3>
+                    <p>A poem by Robert Frost exploring the end of the world through fire and ice, desire and hate.</p>
+                    <span class="tag poetry">Poetry</span>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Gregorio_L%C3%B3pez_y_Fuentes.jpg/440px-Gregorio_L%C3%B3pez_y_Fuentes.jpg" alt="Gregorio López y Fuentes" class="author-image">
+                <div class="post-content">
+                    <div class="author-name">By Gregorio López y Fuentes</div>
+                    <h3>A Letter to God</h3>
+                    <p>A deeply moving story about faith, hope, and human kindness by Gregorio López y Fuentes.</p>
+                    <span class="tag literature">Literature</span>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://i.pinimg.com/736x/c8/05/75/c80575d8e5c3e9be8f5e2a18f9f49b65.jpg" alt="Shirley Toulson" class="author-image">
+                <div class="post-content">
+                    <div class="author-name">By Shirley Toulson</div>
+                    <h3>A Photograph</h3>
+                    <p>A touching poem by Shirley Toulson about memories, loss, and the passage of time.</p>
+                    <span class="tag poetry">Poetry</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Main Page -->
+    <div class="page" id="notes-main">
+        <div class="class-header">
+            <h1>📝 Notes</h1>
+            <p>Select your class to access chapter notes</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search for a class..." onkeyup="searchClasses(this.value)">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="class-grid" id="classGrid">
+                <div class="class-card" onclick="navigateTo('notes8')">
+                    <div class="class-icon">📘</div>
+                    <h3>Class 8th</h3>
+                    <p>Foundation concepts and basics</p>
+                </div>
+
+                <div class="class-card" onclick="navigateTo('notes9')">
+                    <div class="class-icon">📗</div>
+                    <h3>Class 9th</h3>
+                    <p>Building strong fundamentals</p>
+                </div>
+
+                <div class="class-card" onclick="navigateTo('notes10')">
+                    <div class="class-icon">📕</div>
+                    <h3>Class 10th</h3>
+                    <p>Board exam preparation</p>
+                </div>
+
+                <div class="class-card" onclick="navigateTo('notes11')">
+                    <div class="class-icon">📙</div>
+                    <h3>Class 11th</h3>
+                    <p>Advanced topics and concepts</p>
+                </div>
+
+                <div class="class-card" onclick="navigateTo('notes12')">
+                    <div class="class-icon">📔</div>
+                    <h3>Class 12th</h3>
+                    <p>Final preparation for success</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Class 8 Page -->
+    <div class="page" id="notes8">
+        <div class="class-header">
+            <h1>Class 8th Notes</h1>
+            <p>Chapter-wise comprehensive notes</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search chapters..." onkeyup="searchNotes(this.value, 'notes8-list')">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>All Chapters</h2>
+            </div>
+            <div id="notes8-list">
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 1: Rational Numbers</h3>
+                    <p>Introduction to rational numbers, properties and operations</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 2: Linear Equations</h3>
+                    <p>Solving linear equations in one variable</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 3: Understanding Quadrilaterals</h3>
+                    <p>Properties of different types of quadrilaterals</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 4: Force and Pressure</h3>
+                    <p>Introduction to force, pressure and their applications</p>
+                    <span class="tag physics">Physics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 5: Friction</h3>
+                    <p>Types of friction and factors affecting it</p>
+                    <span class="tag physics">Physics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 6: Metals and Non-metals</h3>
+                    <p>Physical and chemical properties of metals</p>
+                    <span class="tag chemistry">Chemistry</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 7: Coal and Petroleum</h3>
+                    <p>Natural resources and their conservation</p>
+                    <span class="tag chemistry">Chemistry</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 8: Cell Structure and Functions</h3>
+                    <p>Basic unit of life and cell organelles</p>
+                    <span class="tag biology">Biology</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Class 9 Page -->
+    <div class="page" id="notes9">
+        <div class="class-header">
+            <h1>Class 9th Notes</h1>
+            <p>Chapter-wise comprehensive notes</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search chapters..." onkeyup="searchNotes(this.value, 'notes9-list')">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>All Chapters</h2>
+            </div>
+            <div id="notes9-list">
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 1: Number Systems</h3>
+                    <p>Real numbers, rational and irrational numbers</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 2: Polynomials</h3>
+                    <p>Introduction to polynomials and algebraic expressions</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 3: Motion</h3>
+                    <p>Types of motion, speed, velocity and acceleration</p>
+                    <span class="tag physics">Physics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 4: Atoms and Molecules</h3>
+                    <p>Atomic structure and molecular composition</p>
+                    <span class="tag chemistry">Chemistry</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 5: Tissues</h3>
+                    <p>Plant and animal tissues classification</p>
+                    <span class="tag biology">Biology</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Class 10 Page -->
+    <div class="page" id="notes10">
+        <div class="class-header">
+            <h1>Class 10th Notes</h1>
+            <p>Chapter-wise comprehensive notes</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search chapters..." onkeyup="searchNotes(this.value, 'notes10-list')">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>All Chapters</h2>
+            </div>
+            <div id="notes10-list">
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 1: Real Numbers</h3>
+                    <p>Euclid's division lemma and fundamental theorem</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 2: Quadratic Equations</h3>
+                    <p>Solutions and applications of quadratic equations</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 3: Light - Reflection and Refraction</h3>
+                    <p>Laws of reflection, refraction and lens formula</p>
+                    <span class="tag physics">Physics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 4: Chemical Reactions and Equations</h3>
+                    <p>Types of reactions and balancing equations</p>
+                    <span class="tag chemistry">Chemistry</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 5: Life Processes</h3>
+                    <p>Nutrition, respiration, transportation and excretion</p>
+                    <span class="tag biology">Biology</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Class 11 Page -->
+    <div class="page" id="notes11">
+        <div class="class-header">
+            <h1>Class 11th Notes</h1>
+            <p>Chapter-wise comprehensive notes</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search chapters..." onkeyup="searchNotes(this.value, 'notes11-list')">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>All Chapters</h2>
+            </div>
+            <div id="notes11-list">
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 1: Sets</h3>
+                    <p>Set theory, operations and Venn diagrams</p>
+                    <span class="tag math">Mathematics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 2: Laws of Motion</h3>
+                    <p>Newton's laws, friction and circular motion</p>
+                    <span class="tag physics">Physics</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 3: Some Basic Concepts of Chemistry</h3>
+                    <p>Mole concept, stoichiometry and laws</p>
+                    <span class="tag chemistry">Chemistry</span>
+                </div>
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 4: Biological Classification</h3>
+                    <p>Five kingdom classification system</p>
+                    <span class="tag biology">Biology</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Class 12 Page -->
+    <div class="page" id="notes12">
+        <div class="class-header">
+            <h1>Class 12th Notes</h1>
+            <p>Chapter-wise comprehensive notes</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search chapters..." onkeyup="searchNotes(this.value, 'notes12-list')">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>All Chapters</h2>
+            </div>
+            <div id="notes12-list">
+                <div class="card">
+                    <div class="progress-bar"></div>
+                    <h3>Chapter 1: Relations and Functions</h3>
+                    <p>Types of relations, inverse functions and composition</p>
+     
