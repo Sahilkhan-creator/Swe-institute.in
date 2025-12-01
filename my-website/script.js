@@ -1,77 +1,66 @@
-// Menu and Navigation Functions
-
-function toggleMenu() {
+// Define all functions in global scope FIRST
+window.toggleMenu = function() {
     const sidebar = document.getElementById('sidebar');
     const settingsSidebar = document.getElementById('settingsSidebar');
     const overlay = document.getElementById('overlay');
     
-    // Close settings if open
-    settingsSidebar.classList.remove('active');
-    
-    // Toggle main menu
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
+    if (settingsSidebar) settingsSidebar.classList.remove('active');
+    if (sidebar) sidebar.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
 }
 
-function toggleSettings() {
+window.toggleSettings = function() {
     const sidebar = document.getElementById('sidebar');
     const settingsSidebar = document.getElementById('settingsSidebar');
     const overlay = document.getElementById('overlay');
     
-    // Close main menu if open
-    sidebar.classList.remove('active');
-    
-    // Toggle settings menu
-    settingsSidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
+    if (sidebar) sidebar.classList.remove('active');
+    if (settingsSidebar) settingsSidebar.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
 }
 
-function closeAll() {
-    document.getElementById('sidebar').classList.remove('active');
-    document.getElementById('settingsSidebar').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
+window.closeAll = function() {
+    const sidebar = document.getElementById('sidebar');
+    const settingsSidebar = document.getElementById('settingsSidebar');
+    const overlay = document.getElementById('overlay');
+    
+    if (sidebar) sidebar.classList.remove('active');
+    if (settingsSidebar) settingsSidebar.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
 }
 
-function navigateTo(page) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(p => {
-        p.classList.remove('active');
-    });
+window.navigateTo = function(page) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.classList.remove('active'));
     
-    // Show selected page
     const targetPage = document.getElementById(page);
     if (targetPage) {
         targetPage.classList.add('active');
     }
     
-    // Close menus
     closeAll();
-    
-    // Scroll to top
     window.scrollTo(0, 0);
 }
 
-function goHome() {
+window.goHome = function() {
     navigateTo('home');
 }
 
-// Search Functions
-
-function searchClasses(query) {
+window.searchClasses = function(query) {
     const cards = document.querySelectorAll('.class-card');
     query = query.toLowerCase();
     
     cards.forEach(card => {
         const text = card.textContent.toLowerCase();
-        if (text.includes(query)) {
+        if (text.includes(query) || query === '') {
             card.style.display = 'block';
         } else {
-            card.style.display = query === '' ? 'block' : 'none';
+            card.style.display = 'none';
         }
     });
 }
 
-function searchNotes(query, containerId) {
+window.searchNotes = function(query, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
@@ -79,45 +68,16 @@ function searchNotes(query, containerId) {
     query = query.toLowerCase();
 
     cards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-        const tags = Array.from(card.querySelectorAll('.tag'))
-            .map(t => t.textContent.toLowerCase())
-            .join(' ');
-
-        if (title.includes(query) || description.includes(query) || tags.includes(query)) {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query) || query === '') {
             card.style.display = 'block';
         } else {
-            card.style.display = query === '' ? 'block' : 'none';
+            card.style.display = 'none';
         }
     });
 }
 
-function searchContent(query, pageId) {
-    const container = document.getElementById(pageId + '-chapters');
-    if (!container) return;
-    
-    const cards = container.querySelectorAll('.card');
-    query = query.toLowerCase();
-
-    cards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-        const tags = Array.from(card.querySelectorAll('.tag'))
-            .map(t => t.textContent.toLowerCase())
-            .join(' ');
-
-        if (title.includes(query) || description.includes(query) || tags.includes(query)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = query === '' ? 'block' : 'none';
-        }
-    });
-}
-
-// FAQ Functions
-
-function toggleFaq(element) {
+window.toggleFaq = function(element) {
     const answer = element.querySelector('.faq-answer');
     const icon = element.querySelector('.faq-question span:last-child');
     
@@ -127,106 +87,30 @@ function toggleFaq(element) {
     }
 }
 
-// Form Handling
-
-function handleSubmit(event) {
+window.handleSubmit = function(event) {
     event.preventDefault();
     
-    // Get form data
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
+    const form = event.target;
+    const name = form.querySelector('input[type="text"]').value;
     
-    // Show success message
-    alert(`Thank you, ${name}! Your message has been sent successfully. We will get back to you at ${email} soon.`);
-    
-    // Reset form
-    event.target.reset();
-    
-    // You can add actual form submission logic here
-    // For example, sending data to a server via fetch/ajax
+    alert('Thank you, ' + name + '! Your message has been sent successfully.');
+    form.reset();
 }
 
-// Smooth Scrolling for Anchor Links
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Card Click Handlers
-
+// Wait for page to load completely
 document.addEventListener('DOMContentLoaded', function() {
-    // Add click handlers to all cards
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', function() {
-            const title = this.querySelector('h3').textContent;
-            console.log('Card clicked:', title);
-            // You can add navigation or modal display logic here
-        });
-    });
+    console.log('SWE Institute loaded successfully!');
     
-    // Add click handlers to post cards
-    document.querySelectorAll('.post-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const title = this.querySelector('h3').textContent;
-            console.log('Post clicked:', title);
-            // You can add navigation to full post logic here
-        });
-    });
-});
-
-// Close menu when clicking outside
-
-document.addEventListener('click', function(event) {
-    const sidebar = document.getElementById('sidebar');
-    const settingsSidebar = document.getElementById('settingsSidebar');
-    const menuBtn = document.querySelector('.header-right');
-    const settingsBtn = document.querySelector('.header-left');
+    // Add click handler to overlay
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+        overlay.addEventListener('click', closeAll);
+    }
     
-    // Check if click is outside sidebars and not on menu buttons
-    if (!sidebar.contains(event.target) && 
-        !settingsSidebar.contains(event.target) &&
-        event.target !== menuBtn && 
-        event.target !== settingsBtn) {
-        
-        if (sidebar.classList.contains('active') || 
-            settingsSidebar.classList.contains('active')) {
+    // Close menu on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
             closeAll();
         }
-    }
+    });
 });
-
-// Keyboard shortcuts
-
-document.addEventListener('keydown', function(event) {
-    // ESC key to close menus
-    if (event.key === 'Escape') {
-        closeAll();
-    }
-    
-    // Ctrl/Cmd + K to focus search
-    if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
-        event.preventDefault();
-        const searchInput = document.querySelector('.search-box input');
-        if (searchInput) {
-            searchInput.focus();
-        }
-    }
-});
-
-// Console welcome message
-
-console.log('%c🎓 Welcome to SWE Institute!', 'color: #667eea; font-size: 20px; font-weight: bold;');
-console.log('%cEmpowering students with quality education', 'color: #764ba2; font-size: 14px;');
-console.log('%c
-Developed with ❤️ by Sahil Swe', 'color: #666; font-size: 12px;');
